@@ -56,7 +56,7 @@ def getExercisesById(request: Request, exercise_id: int) -> Response:
 def exercise_review(request: Request, exercise_id: int) -> Response:
     """
         Если метод POST, то отправляет ответ на review;
-        Если метод GET, то запрашивает результат последнего review.
+        Если метод GET, то запрашивает список всех решений по упражненю.
     """
     if request.method == 'POST':
         return sendReplyForReview(request, exercise_id)
@@ -70,7 +70,7 @@ def getReviewInfo(request: Request, exercise_id: int) -> Response:
         session_id = request.session.session_key
         review = ExerciseReview.objects.filter(session_id=session_id)
         if (len(review) > 0):
-            serialized_exercise = ExerciseReviewSerializer(review[0]).data
+            serialized_exercise = ExerciseReviewSerializer(review, many=True).data
             return Response(serialized_exercise, status=status.HTTP_200_OK)
         else:
             return Response({}, status=status.HTTP_204_NO_CONTENT)
