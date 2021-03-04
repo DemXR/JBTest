@@ -1,0 +1,31 @@
+/edu_venv
+.DS_Store
+/frontend/node_modules
+/dist
+
+backend/education/celerybeat-schedule.db
+backend/education/db.sqlite3
+backend/education/static
+backend/**/migrations/
+__pycache__
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+backend/education/celerybeat-schedule

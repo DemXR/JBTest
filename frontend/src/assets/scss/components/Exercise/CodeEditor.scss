@@ -1,0 +1,9 @@
+.code_mirror_wrapper, .code_mirror_wrapper > div{
+    height: 100%;
+}
+
+.code_mirror_area {
+    white-space: pre-line;
+    width: 100%;
+    height: 100%;
+}

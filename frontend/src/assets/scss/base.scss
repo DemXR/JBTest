@@ -1,0 +1,55 @@
+body {
+    background-color: $gray-100;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    background-color: $gray-400;
+    margin: 0;
+}
+
+h1, h3 {
+    margin: 0
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+.el-button{
+    &.el-button--success {
+        background-color: $green-400;
+        border: 0;
+
+        &.is-disabled {
+            background-color: rgba($green-400, 0.2);
+
+            &:hover, &:active, &:focus {
+                background-color: rgba($green-400, 0.2);
+            }
+        }
+
+        &:hover, &:active, &:focus {
+            background-color: rgba($green-400, 0.8);
+        }
+    }
+
+    &.el-button--default {
+        background-color: $blue-400;
+        border: 0;
+        color: white;
+
+        &:hover, &:active, &:focus {
+            background-color: rgba($blue-400, 0.8);
+            color: white;
+        }
+    }
+}
+
+.green {
+    color: $green-400;
+}
+
+.red {
+    color: $red-500;
+}

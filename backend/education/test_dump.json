@@ -1,0 +1,108 @@
+[
+    {
+        "model":"auth.user",
+        "pk":1,
+        "fields":{
+           "password":"pbkdf2_sha256$216000$rGtlySuuci1P$doUdJyw9S495pZttGSn9aUMo5BWBPMk0C3AxibDChzw=",
+           "last_login":"2021-03-01T12:23:38.870Z",
+           "is_superuser":true,
+           "username":"admin",
+           "first_name":"",
+           "last_name":"",
+           "email":"admin@admin.ru",
+           "is_staff":true,
+           "is_active":true,
+           "date_joined":"2021-03-01T12:22:25.275Z",
+           "groups":[
+              
+           ],
+           "user_permissions":[
+              
+           ]
+        }
+     },
+    {
+       "model":"exercises.exercise",
+       "pk":1,
+       "fields":{
+          "title":"Упражнение №1",
+          "body":"Посчитать сумму двух целых чисел.",
+          "created_at":"2021-03-01T12:43:37.006Z",
+          "updated_at":"2021-03-01T12:43:37.006Z"
+       }
+    },
+    {
+       "model":"exercises.exercise",
+       "pk":2,
+       "fields":{
+          "title":"Упражнение №2",
+          "body":"Написать функцию is_prime, принимающую 1 аргумент — число от 0 до 1000, и возвращающую True, если оно простое, и False - иначе.",
+          "created_at":"2021-03-03T11:49:43.944Z",
+          "updated_at":"2021-03-01T12:43:37.315Z"
+       }
+    },
+    {
+       "model":"exercises.exercise",
+       "pk":3,
+       "fields":{
+          "title":"Упражнение №3",
+          "body":"Написать функцию is_year_leap, принимающую 1 аргумент — год, и возвращающую True, если год високосный, и False иначе.",
+          "created_at":"2021-03-03T11:49:55.006Z",
+          "updated_at":"2021-03-03T11:54:36.539Z"
+       }
+    },
+    {
+       "model":"exercises.exercise",
+       "pk":4,
+       "fields":{
+          "title":"Упражнение №4",
+          "body":"Написать функцию square, принимающую 1 аргумент — сторону квадрата, и возвращающую 3 значения (с помощью кортежа): периметр квадрата, площадь квадрата и диагональ квадрата.",
+          "created_at":"2021-03-03T11:50:02.358Z",
+          "updated_at":"2021-03-03T11:54:57.572Z"
+       }
+    },
+    {
+       "model":"exercises.exercise",
+       "pk":5,
+       "fields":{
+          "title":"Упражнение №5",
+          "body":"Написать функцию season, принимающую 1 аргумент — номер месяца (от 1 до 12), и возвращающую время года, которому этот месяц принадлежит (зима, весна, лето или осень).",
+          "created_at":"2021-03-03T11:50:09.455Z",
+          "updated_at":"2021-03-03T11:55:15.365Z"
+       }
+    },
+    {
+       "model":"exercises.exercise",
+       "pk":6,
+       "fields":{
+          "title":"Упражнение №6",
+          "body":"Написать функцию date, принимающую 3 аргумента — день, месяц и год. Вернуть True, если такая дата есть в нашем календаре, и False иначе.",
+          "created_at":"2021-03-03T11:57:41.081Z",
+          "updated_at":"2021-03-03T11:57:41.082Z"
+       }
+    },
+    {
+       "model":"exercises.exercisereviewstatus",
+       "pk":1,
+       "fields":{
+          "slug":"evaluation",
+          "name":"На проверке"
+       }
+    },
+    {
+       "model":"exercises.exercisereviewstatus",
+       "pk":2,
+       "fields":{
+          "slug":"correct",
+          "name":"Верно"
+       }
+    },
+    {
+       "model":"exercises.exercisereviewstatus",
+       "pk":3,
+       "fields":{
+          "slug":"wrong",
+          "name":"Неверный"
+       }
+    }
+ ]

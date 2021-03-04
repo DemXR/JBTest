@@ -1,0 +1,72 @@
+@import "CodeEditor";
+
+.exercises {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100vh;
+    justify-content: center;
+}
+
+.exercise-container {
+    width: 990px;
+    background-color: $purple-700;
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.1);
+    border-radius: 1rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    margin-top: 40px;
+    overflow: hidden;
+
+    &__header {
+        padding: 25px;
+        color: $gray-400;
+    }
+
+    &__actions {
+        padding: 25px;
+        text-align: right;
+    }
+
+    &__status {
+        padding: 25px;
+        text-align: right;
+        color: $gray-400;
+    }
+
+    .el-loading-spinner {
+        .el-loading-text {
+            color: white;
+        }
+        .path {
+            stroke: white;
+        }
+    }
+}
+
+.exercise-pagination {
+    margin-bottom: 40px;
+    margin-top: 30px;
+    text-align: center;
+
+    .el-pagination.is-background .el-pager li:not(.disabled) {
+        color: $green-400;
+
+        &:hover {
+            color: $green-400;
+        }
+
+        &.active {
+            background-color: $green-400;
+            color: white;
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}
+
+.exercise-loading, .exercise-not-found {
+    display: flex;
+    align-items: center;
+}
