@@ -8,8 +8,16 @@
         <div class="exercise-container__header">
             <h1 class="exercise-title">
                 {{ exercise.title }}
-                <i class="el-icon-success green" title="Верно" v-if="reviewStatus === 'correct'"></i>
-                <i class="el-icon-error red" title="Неверно" v-if="reviewStatus === 'wrong'"></i>
+                <i
+                    class="el-icon-success green"
+                    title="Верно"
+                    v-if="reviewStatus === 'correct'"
+                ></i>
+                <i
+                    class="el-icon-error red"
+                    title="Неверно"
+                    v-if="reviewStatus === 'wrong'"
+                ></i>
             </h1>
             <h3 class="exercise-body">{{ exercise.body }}</h3>
         </div>
@@ -20,7 +28,10 @@
                 :code="exerciseCode"
             />
         </div>
-        <div class="exercise-container__footer" v-if="reviewStatus != 'correct'">
+        <div
+            class="exercise-container__footer"
+            v-if="reviewStatus != 'correct'"
+        >
             <exercise-footer
                 :review="exercise.review"
                 @sendToReview="sendForReview"
