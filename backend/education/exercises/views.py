@@ -53,11 +53,11 @@ def getExercisesById(request: Request, exercise_id: int) -> Response:
 
 @api_view(["POST", "GET"])
 @permission_classes((AllowAny,))
-"""
-    Если метод POST, то отправляет ответ на review;
-    Если метод GET, то запрашивает результат последнего review.
-"""
 def exercise_review(request: Request, exercise_id: int) -> Response:
+    """
+        Если метод POST, то отправляет ответ на review;
+        Если метод GET, то запрашивает результат последнего review.
+    """
     if request.method == 'POST':
         return sendReplyForReview(request, exercise_id)
     else:
