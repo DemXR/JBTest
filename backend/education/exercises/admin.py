@@ -2,6 +2,9 @@ from django.contrib import admin
 from .models import Exercise, ExerciseReviewStatus, ExerciseReview, ExerciseReply
 
 class ExerciseReviewAdmin(admin.ModelAdmin):
+    """
+        Детализация по ревью (ТОЛЬКО ДЛЯ ЧТЕНИЯ)
+    """
     list_display = ('exercise', 'reply', 'status', 'created_at')
     list_filter = ('reply__status', ('created_at', admin.DateFieldListFilter),)
     raw_id_admin = ('reply', )

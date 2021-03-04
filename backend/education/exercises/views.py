@@ -12,6 +12,9 @@ from .tasks import send_for_review
 @api_view(["GET"])
 @permission_classes((AllowAny,))
 def getExercisesList(request: Request) -> Response:
+    """
+        Метод возвращает перечень упражнений
+    """
     if not request.session or not request.session.session_key:
         request.session.save()
         
@@ -19,6 +22,8 @@ def getExercisesList(request: Request) -> Response:
     result = []
     for exercise in exercises:
         serialized_exercise = ExerciseSerializer(exercise).data
+
+        # Если текущий пользователь уже отправлял на ревью, то возвращается результат ревью
         if request.session and request.session.session_key:
             try:
                 review = ExerciseReview.objects.filter(exercise=exercise, session_id=request.session.session_key).first()
@@ -34,6 +39,9 @@ def getExercisesList(request: Request) -> Response:
 @api_view(["GET"])
 @permission_classes((AllowAny,))
 def getExercisesById(request: Request, exercise_id: int) -> Response:
+    """
+        Метод возвращает сведения об упражнении по его id
+    """
     try:
         exercise = Exercise.objects.get(id=exercise_id)
         serialized_exercise = ExerciseSerializer(exercise).data
@@ -45,6 +53,10 @@ def getExercisesById(request: Request, exercise_id: int) -> Response:
 
 @api_view(["POST", "GET"])
 @permission_classes((AllowAny,))
+"""
+    Если метод POST, то отправляет ответ на review;
+    Если метод GET, то запрашивает результат последнего review.
+"""
 def exercise_review(request: Request, exercise_id: int) -> Response:
     if request.method == 'POST':
         return sendReplyForReview(request, exercise_id)
@@ -95,6 +107,9 @@ def sendReplyForReview(request: Request, exercise_id: int) -> Response:
 @api_view(["GET"])
 @permission_classes((AllowAny,))
 def getReviewResult(request: Request, exercise_id: int, review_id: int) -> Response:
+    """
+        Запрос результа ревью по его id
+    """
     try:
         review = ExerciseReview.objects.get(id=review_id, session_id=request.session.session_key)
         serialized_review = ExerciseReviewSerializer(review).data

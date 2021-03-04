@@ -4,6 +4,9 @@ from .models import Exercise, ExerciseReviewStatus
 import json
 
 class ExerciseTests(TestCase):
+    """
+        Тестирование приложения "Решение задач на код"
+    """
 
     def setUp(self):
         self.client = APIClient()
@@ -16,12 +19,14 @@ class ExerciseTests(TestCase):
         self.client.logout()
 
     def test_review(self):
+        # Запрос перечня упражнений
         response = self.client.get('/api/exercise/')
         self.assertEqual(response.status_code, 200)
 
         exercises = json.loads(response.content.decode('utf-8'))
         self.assertGreater(len(exercises), 0)
 
+        # Отправка ответа на ревью
         exercise = exercises[0]
         url = '/api/exercise/%s/review/' % exercise.get('id')
         body = {'reply': 'print("hello, world!")'}
@@ -34,6 +39,7 @@ class ExerciseTests(TestCase):
         status_slug = review.get('reply').get('status').get('slug')
         self.assertIn(status_slug, ['evaluation', 'wrong', 'correct'])
 
+        # Запрос результата ревью по коду ревью
         url = '/api/exercise/%s/review/%s/' % (exercise.get('id'), review.get('id'))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)

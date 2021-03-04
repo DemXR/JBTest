@@ -8,7 +8,11 @@ from .models import ExerciseReviewStatus, Exercise, ExerciseReply
 
 @shared_task
 def check_review_status() -> str:
+    """
+        Периодическая проверка заданий на ревью
+    """
     REVIEW_STATUSES = {status.slug: status for status in ExerciseReviewStatus.objects.all()}
+    # Запрашиваются только те упражнения, которые еще не проверены
     replies = ExerciseReply.objects.filter(Q(service_id=None) | Q(status=REVIEW_STATUSES['evaluation']))
     cnt_changed = 0
     for reply in replies:
@@ -23,6 +27,9 @@ def check_review_status() -> str:
 
 @shared_task
 def send_for_review(reply_id: int) -> str:
+    """
+        Отправка упражнения на ревью
+    """
     reply = ExerciseReply.objects.get(id=reply_id)
     id, status = post_submission(reply.reply_text)
     reply.service_id = id
@@ -31,6 +38,9 @@ def send_for_review(reply_id: int) -> str:
     return "Review service_id: %s, status: %s" % (id, status)
 
 
+"""
+    Ниже указаны методы для имитации стороннего сервиса
+"""
 def post_submission(reply: str) -> Tuple[int, str]:
     id = int(time.time() * 1000)
     status = random.choice([*['evaluation'] * 10, 'correct', 'wrong'])

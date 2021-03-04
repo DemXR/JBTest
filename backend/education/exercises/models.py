@@ -4,6 +4,9 @@ from django.db import models
 from django.contrib.sessions.models import Session
 
 class ExerciseReviewStatus(models.Model):
+    """
+        Статусы ревью
+    """
     class Meta:
         # "d_" означает "dictionary". Данная таблица содержит редко изменяемую справочную информацию.
         db_table = "d_exercises_replies_statuses"
@@ -16,6 +19,9 @@ class ExerciseReviewStatus(models.Model):
         
 
 class Exercise(models.Model):
+    """
+        Упражнения
+    """
     class Meta:
         db_table = "exercises"
         ordering = ["id"]
@@ -30,6 +36,9 @@ class Exercise(models.Model):
 
 
 class ExerciseReply(models.Model):
+    """
+        Ответы на упражнения
+    """
     class Meta:
         db_table = "exercises_replies"
         unique_together = ('exercise', 'reply_hash')
@@ -46,6 +55,10 @@ class ExerciseReply(models.Model):
 
 
 class ExerciseReview(models.Model):
+    """
+        Запросы на ревью
+    """
+
     class Meta:
         db_table = "exercises_reviews"
         ordering = ["-created_at"]

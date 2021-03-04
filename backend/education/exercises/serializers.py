@@ -3,6 +3,9 @@ from .models import Exercise, ExerciseReview, ExerciseReply, ExerciseReviewStatu
 
 
 class ExerciseSerializer(serializers.Serializer):
+    """
+        Упражнения
+    """
     class Meta:
         model = Exercise
 
@@ -21,6 +24,9 @@ class ExerciseSerializer(serializers.Serializer):
         return instance
 
 class ExerciseReviewStatusSerializer(serializers.Serializer):
+    """
+        Статусы ревью
+    """
     class Meta:
         model = ExerciseReviewStatus
 
@@ -29,6 +35,9 @@ class ExerciseReviewStatusSerializer(serializers.Serializer):
 
 
 class ExerciseReplySerializer(serializers.Serializer):
+    """
+        Ответы на упражнения
+    """
     class Meta:
         model = ExerciseReply
 
@@ -37,10 +46,12 @@ class ExerciseReplySerializer(serializers.Serializer):
 
 
 class ExerciseReviewSerializer(serializers.Serializer):
+    """
+        Запросы на ревью
+    """
     class Meta:
         model = ExerciseReview
 
     id = serializers.IntegerField(read_only=True)
-    # exercise = ExerciseSerializer()
     reply = ExerciseReplySerializer(read_only=True)
     created_at = serializers.DateTimeField
